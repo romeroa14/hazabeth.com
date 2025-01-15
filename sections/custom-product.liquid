@@ -1,0 +1,224 @@
+<div class="product-container">
+  <!-- Imagen del producto -->
+  <div class="image-container">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | image_url }}"
+        alt="{{ product.title }}"
+        class="product-image"
+        width="700px"
+        height="800px"
+      >
+    {% else %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0869/5041/2472/files/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.webp?v=1736438657"
+        alt="Imagen no disponible"
+        class="product-image"
+        width="400px"
+        height="400px"
+      >
+    {% endif %}
+  </div>
+
+  <!-- Información del producto -->
+  <div class="product-info">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-price">
+      <span class="original-price">{{ product.compare_at_price | money }}</span>
+      <span class="discounted-price">{{ product.price | money }}</span>
+    </p>
+
+    <p class="shipping-info">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M21 16v-3l-7-2.7V3.9c0-.5-.4-.9-.9-.9h-2.2c-.5 0-.9.4-.9.9v6.4L3 13v3l7-1.6v3.1l-2.5 2.1v1h8v-1L14 18.5V15l7 1z"/>
+        </svg>
+      </span>
+      Envíos a todo el mundo
+    </p>
+
+    <!-- Descripción y Guía de tallas -->
+    <div class="product-tabs">
+      <button id="description-tab" class="tab-button active">Descripción</button>
+      <button id="size-guide-tab" class="tab-button">Guía de Tallas</button>
+    </div>
+
+    <div id="description-content" class="tab-content active">
+      <p>{{ product.description }}</p>
+    </div>
+    <div id="size-guide-content" class="tab-content">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0869/5041/2472/files/pruebaguiaweb-06_600x600_777468be-9c05-4e39-9f2f-a1afd764889f.webp?v=1736555983"
+        alt="Guía de Tallas"
+        width="300px"
+        height="400px"
+      >
+    </div>
+
+    <div class="size-selector">
+      <span>Talla:</span>
+      {% for variant in product.variants %}
+        <button
+          class="size-option {% if forloop.first %}active{% endif %}"
+          data-variant-id="{{ variant.id }}"
+        >
+          {{ variant.title }}
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="product-options">
+      <!-- Selector de tallas -->
+
+      <!-- Selector de cantidad -->
+      <div class="quantity-container">
+        <button class="quantity-btn decrement">-</button>
+        <input type="number" class="quantity-input" value="1" min="1">
+        <button class="quantity-btn increment">+</button>
+      </div>
+
+      <!-- Botón agregar al carrito -->
+      <button
+        class="add-to-cart-btn"
+        data-variant-id="{{ product.variants.first.id }}"
+      >
+        Agregar al carrito
+      </button>
+    </div>
+
+    <div class="modal-overlay"></div>
+    <div id="cart-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>Carrito</h2>
+        <div id="cart-items"></div>
+        <div class="modal-footer">
+          <p id="cart-subtotal"></p>
+          <button id="view-cart" class="btn">Ver carrito</button>
+          <button id="checkout" class="btn primary">Pagar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón comprar ahora -->
+    <button
+      class="buy-now-btn"
+      data-variant-id="{{ product.variants.first.id }}"
+    >
+      Comprar ahora
+    </button>
+
+    <!-- Instrucciones y envíos -->
+    <div class="extra-info">
+      <details>
+        <summary>
+          <img src="{{ 'icon-shirt.svg' | asset_url }}" alt="Ícono de más" class="icon" width="15" height="15">
+          <span class="summary-title">Instrucciones de Cuidado</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Lavar a mano. No usar secadora.</p>
+      </details>
+
+      <details>
+        <summary class="envios">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
+              <path d="M16 8h4l3 5v3h-7"></path>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </span>
+          <span class="summary-title ">Envíos</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Envíos en 5-7 días hábiles.</p>
+      </details>
+    </div>
+
+    <!-- Botón compartir -->
+    <div class="share-button">
+      <a>
+        <div class="share-info">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+    <div class="upsell-section">
+      <h2 class="upsell-title">Completa tu look</h2>
+      <div class="upsell-products">
+        {% if product.collections.size > 0 %}
+          {% for collection in product.collections %}
+            {% for upsell_product in collection.products %}
+              {% if upsell_product.id != product.id %}
+                <div class="upsell">
+                  <img
+                    src="{{ upsell_product.featured_image | image_url }}"
+                    alt="{{ upsell_product.title }}"
+                    width="400px"
+                    height="400px"
+                  >
+                  <p>{{ upsell_product.title }}</p>
+                  <p>
+                    <span class="price">{{ upsell_product.price | money }}</span>
+                    {% if upsell_product.compare_at_price %}
+                      <span class="compare-price">{{ upsell_product.compare_at_price | money }}</span>
+                    {% endif %}
+                  </p>
+                  <button
+                    class="upsell-add-btn"
+                    data-product-id="{{ upsell_product.variants.first.id }}"
+                  >
+                    Agregar
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+          <p>No hay productos relacionados disponibles.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div id="cart-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>Carrito</h2>
+        <div id="cart-items"></div>
+        <div class="modal-footer">
+          <a href="/cart" class="btn">Ver carrito</a>
+          <a href="/checkout" class="btn primary">Pagar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
