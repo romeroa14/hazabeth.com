@@ -253,10 +253,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!atBottom) {
         // Scroll within product-info
         productInfo.scrollTop += event.deltaY;
-        event.preventDefault();
+        event.preventDefault(); // Previene el scroll del documento
       }
     }
-  });
+  }, { passive: false }); // Asegúrate de que el evento no sea pasivo
 });
 
 
