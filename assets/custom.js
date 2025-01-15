@@ -246,12 +246,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
-      if (event.deltaY > 0 && productInfo.scrollTop + productInfo.clientHeight < productInfo.scrollHeight) {
-        // Scroll down
-        productInfo.scrollTop += event.deltaY;
-        event.preventDefault();
-      } else if (event.deltaY < 0 && productInfo.scrollTop > 0) {
-        // Scroll up
+      const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
+      const atTop = productInfo.scrollTop === 0;
+
+      if ((event.deltaY > 0 && !atBottom) || (event.deltaY < 0 && !atTop)) {
+        // Scroll within product-info
         productInfo.scrollTop += event.deltaY;
         event.preventDefault();
       }
