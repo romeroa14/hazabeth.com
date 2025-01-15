@@ -253,9 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Scroll within product-info
         productInfo.scrollTop += event.deltaY;
         event.preventDefault(); // Previene el scroll del documento
-      } else if (atBottom && event.deltaY > 0) {
-        // Allow normal scroll down
-        return; // Permite el scroll del documento hacia abajo
       } else if (atTop && event.deltaY < 0) {
         // Allow normal scroll up
         return; // Permite el scroll del documento hacia arriba
