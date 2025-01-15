@@ -243,9 +243,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
+  const productContainer = document.querySelector(".product-container");
 
-  // Asegúrate de que el contenedor permita el desplazamiento
-  productInfo.style.overflowY = "auto";
+  productContainer.addEventListener("wheel", (event) => {
+    if (productInfo.scrollHeight > productInfo.clientHeight) {
+      if (event.deltaY > 0 && productInfo.scrollTop + productInfo.clientHeight < productInfo.scrollHeight) {
+        // Scroll down
+        productInfo.scrollTop += event.deltaY;
+        event.preventDefault();
+      } else if (event.deltaY < 0 && productInfo.scrollTop > 0) {
+        // Scroll up
+        productInfo.scrollTop += event.deltaY;
+        event.preventDefault();
+      }
+    }
+  });
 });
 
 
