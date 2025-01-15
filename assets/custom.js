@@ -253,6 +253,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Scroll within product-info
         productInfo.scrollTop += event.deltaY;
         event.preventDefault();
+      } else if (atBottom && event.deltaY > 0) {
+        // Allow normal scroll down
+        return;
+      } else if (atTop && event.deltaY < 0) {
+        // Allow normal scroll up
+        return;
+      } else {
+        event.preventDefault();
       }
     }
   });
