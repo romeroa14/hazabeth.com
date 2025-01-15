@@ -12,7 +12,8 @@
   margin: auto;
   padding: 2rem 1rem;
   font-family: 'Arial', sans-serif;
-   overflow: hidden;
+  overflow: hidden;
+  position: relative; /* Asegura que el contenedor sea relativo */
 }
 
 .product-options {
@@ -133,7 +134,7 @@
 .product-info {
   flex: 1;
   max-width: 400px;
-  max-height: 100vh;
+  max-height: 80vh; /* Ajusta según sea necesario */
   overflow-y: auto;
   margin-left: 1rem;
   display: flex;
