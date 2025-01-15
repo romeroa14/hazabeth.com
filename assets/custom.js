@@ -243,7 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
-  const productContainer = document.querySelector(".product-container");
 
   document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
@@ -256,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
       } else if (atBottom && event.deltaY > 0) {
         // Allow normal scroll down
-        productContainer.style.position = 'static'; // Desfija el contenedor
+        return;
       } else if (atTop && event.deltaY < 0) {
         // Allow normal scroll up
         return;
