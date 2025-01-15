@@ -1,4 +1,4 @@
-console.log('si funciona');
+console.log('accedi a github');
 
 console.log(window.ShopifyAnalytics.meta.product.variants);
 
