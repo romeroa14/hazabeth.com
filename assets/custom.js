@@ -241,20 +241,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("scroll", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
-  const imgContainer = document.querySelector(".image-container");
-  const scrollTop = productInfo.scrollTop;
-  const scrollHeight = productInfo.scrollHeight;
-  const clientHeight = productInfo.clientHeight;
 
-  if (scrollTop + clientHeight < scrollHeight) {
-    productInfo.style.overflowY = "scroll";
-    // imgContainer.body.style.overflowY = "hidden"; // Evita el scroll de la página
-  } else {
-    productInfo.style.overflowY = "hidden";
-    document.body.style.overflowY = "scroll"; // Habilita el scroll de la página
-  }
+  // Asegúrate de que el contenedor permita el desplazamiento
+  productInfo.style.overflowY = "auto";
 });
 
 
