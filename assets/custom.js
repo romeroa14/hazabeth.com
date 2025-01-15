@@ -246,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
+      console.log('scrollHeight', productInfo.scrollHeight);
       const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
 
       if (!atBottom) {
