@@ -243,9 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
-  const productContainer = document.querySelector(".product-container");
 
-  productContainer.addEventListener("wheel", (event) => {
+  document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
       if (event.deltaY > 0 && productInfo.scrollTop + productInfo.clientHeight < productInfo.scrollHeight) {
         // Scroll down
