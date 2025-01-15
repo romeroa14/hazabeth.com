@@ -246,11 +246,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
-      console.log('scrollHeight', productInfo.scrollHeight);
-      console.log('clientHeight', productInfo.clientHeight);
       const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
+      const atTop = productInfo.scrollTop === 0;
 
-      if (!atBottom) {
+      if (!atBottom || (event.deltaY < 0 && !atTop)) {
         // Scroll within product-info
         productInfo.scrollTop += event.deltaY;
         event.preventDefault(); // Previene el scroll del documento
