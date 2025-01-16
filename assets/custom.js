@@ -247,17 +247,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("wheel", (event) => {
     if (productInfo.scrollHeight > productInfo.clientHeight) {
       const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
-      const atTop = productInfo.scrollTop === 0;
 
       if (!atBottom && event.deltaY > 0) {
         // Scroll down within product-info
         productInfo.scrollTop += event.deltaY;
         event.preventDefault();
-      } else if (!atTop && event.deltaY < 0) {
-        // Scroll up within product-info
-        productInfo.scrollTop += event.deltaY;
-        event.preventDefault();
       }
+      // Permitir scroll hacia arriba naturalmente
     }
   }, { passive: false });
 });
