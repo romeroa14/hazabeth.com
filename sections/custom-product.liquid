@@ -180,25 +180,20 @@
             {% for upsell_product in collection.products %}
               {% if upsell_product.id != product.id %}
                 <div class="upsell">
-                  <img
-                    src="{{ upsell_product.featured_image | image_url }}"
-                    alt="{{ upsell_product.title }}"
-                    width="400px"
-                    height="400px"
-                  >
-                  <p>{{ upsell_product.title }}</p>
-                  <p>
-                    <span class="price">{{ upsell_product.price | money }}</span>
-                    {% if upsell_product.compare_at_price %}
-                      <span class="compare-price">{{ upsell_product.compare_at_price | money }}</span>
-                    {% endif %}
-                  </p>
-                  <button
-                    class="upsell-add-btn"
-                    data-product-id="{{ upsell_product.variants.first.id }}"
-                  >
-                    Agregar
-                  </button>
+                  <img src="{{ upsell_product.featured_image | image_url }}" alt="{{ upsell_product.title }}" width="400px"
+                  height="400px">
+                  <div class="upsell-details">
+                    <p>{{ upsell_product.title }}</p>
+                    <p>
+                      <span class="price">{{ upsell_product.price | money }}</span>
+                      {% if upsell_product.compare_at_price %}
+                        <span class="compare-price">{{ upsell_product.compare_at_price | money }}</span>
+                      {% endif %}
+                    </p>
+                    <button class="upsell-add-btn" data-product-id="{{ upsell_product.variants.first.id }}">
+                      Agregar
+                    </button>
+                  </div>
                 </div>
               {% endif %}
             {% endfor %}

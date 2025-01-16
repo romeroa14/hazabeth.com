@@ -387,18 +387,24 @@ details[open] {
 }
 
 .upsell {
+  display: flex; /* Alinea los elementos en fila */
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;
-  text-align: left;
-  max-width: 200px;
+  max-width: 400px; /* Ajusta el tamaño máximo */
 }
 
 .upsell img {
-  max-width: 100%;
+  max-width: 150px; /* Tamaño de la imagen */
   height: auto;
-  margin-bottom: 0.5rem;
+  margin-right: 1rem; /* Espacio entre la imagen y el texto */
   border-radius: 8px;
+}
+
+.upsell-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .upsell p {
@@ -407,7 +413,7 @@ details[open] {
 }
 
 .price {
-  font-size: 1rem;
+  font-size: 1.2rem; /* Tamaño del precio */
   color: #e60023;
   font-weight: bold;
 }
@@ -419,14 +425,14 @@ details[open] {
 }
 
 .upsell-add-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.5rem; /* Botón más grande */
   background-color: #fff;
   color: #000;
   border: 1px solid #000;
   border-radius: 4px;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Tamaño de fuente del botón */
 }
 
 .upsell-add-btn:hover {
