@@ -245,15 +245,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
 
   document.addEventListener("wheel", (event) => {
-    if (productInfo.scrollHeight > productInfo.clientHeight) {
-      const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
+    const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
 
-      if (!atBottom && event.deltaY > 0) {
-        // Scroll down within product-info
-        productInfo.scrollTop += event.deltaY;
-        event.preventDefault();
-      }
-      // Permitir scroll hacia arriba naturalmente
+    if (!atBottom && event.deltaY > 0) {
+      // Scroll down within product-info
+      productInfo.scrollTop += event.deltaY;
+      event.preventDefault();
+    } else if (event.deltaY < 0) {
+      // Scroll up within product-info
+      productInfo.scrollTop += event.deltaY;
     }
   }, { passive: false });
 });
