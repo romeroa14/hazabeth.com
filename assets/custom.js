@@ -249,16 +249,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
       const atTop = productInfo.scrollTop === 0;
 
-      if (!atBottom || (event.deltaY < 0 && !atTop)) {
-        // Scroll within product-info
+      if (!atBottom && event.deltaY > 0) {
+        // Scroll down within product-info
         productInfo.scrollTop += event.deltaY;
-        event.preventDefault(); // Previene el scroll del documento
-      } else if (atTop && event.deltaY < 0) {
-        // Allow normal scroll up
-        return; // Permite el scroll del documento hacia arriba
+        event.preventDefault();
+      } else if (!atTop && event.deltaY < 0) {
+        // Scroll up within product-info
+        productInfo.scrollTop += event.deltaY;
+        event.preventDefault();
       }
     }
-  }, { passive: false }); // Asegúrate de que el evento no sea pasivo
+  }, { passive: false });
 });
 
 
