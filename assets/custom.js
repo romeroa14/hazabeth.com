@@ -245,15 +245,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const productInfo = document.querySelector(".product-info");
 
   document.addEventListener("wheel", (event) => {
-    const atBottom = productInfo.scrollTop + productInfo.clientHeight >= productInfo.scrollHeight;
+    if (productInfo.scrollHeight > productInfo.clientHeight) {
+      const atBottom = Math.abs(
+        productInfo.scrollHeight - productInfo.clientHeight - productInfo.scrollTop
+      ) < 1;
+      const atTop = productInfo.scrollTop === 0;
 
-    if (!atBottom && event.deltaY > 0) {
-      // Scroll down within product-info
-      productInfo.scrollTop += event.deltaY;
-      event.preventDefault();
-    } else if (event.deltaY < 0) {
-      // Scroll up within product-info
-      productInfo.scrollTop += event.deltaY;
+      if (!atBottom && event.deltaY > 0) {
+        // Scroll down within product-info
+        productInfo.scrollTop += event.deltaY;
+        event.preventDefault();
+      } else if (!atTop && event.deltaY < 0) {
+        // Scroll up within product-info
+        productInfo.scrollTop += event.deltaY;
+        event.preventDefault();
+      }
+      // Si estamos en el tope o fondo, permitir el scroll normal del documento
     }
   }, { passive: false });
 });
