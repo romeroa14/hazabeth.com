@@ -479,11 +479,16 @@ details[open] {
 
 .announcement-bar-container {
   width: 100vw;
+  background-color: #000;
+  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
-  transition: transform 0.3s ease;
+  height: 40px;
+  z-index: 1001;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 }
 
 .header-wrapper {
@@ -491,21 +496,25 @@ details[open] {
   width: 100%;
   top: 40px; /* Altura de la barra de anuncios */
   left: 0;
-  z-index: 999;
-  background: white;
-  transition: transform 0.3s ease;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco inicial */
+  transition: all 0.3s ease;
 }
 
-.hide-up {
-  transform: translateY(-100%);
+/* Clase para el header cuando se hace scroll */
+.header-wrapper.scrolled {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
 }
 
+/* Clase para ocultar el header */
 .header-wrapper.hide-up {
   transform: translateY(-100%);
+  opacity: 0;
 }
 
 main {
-  margin-top: calc(40px + 80px); /* Altura de la barra de anuncios + altura del header */
+  padding-top: calc(40px + 80px); /* Ajuste para el contenido principal */
 }
 
 .announcement-marquee {
