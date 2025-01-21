@@ -1,4 +1,4 @@
-console.log('accedi a github');
+console.log('accedi a githubbbbb');
 
 console.log(window.ShopifyAnalytics.meta.product.variants);
 
