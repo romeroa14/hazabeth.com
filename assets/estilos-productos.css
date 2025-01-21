@@ -486,29 +486,29 @@ details[open] {
   height: 40px;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  left: 0;
-  right: 0;
 }
 
 .announcement-marquee {
-  display: inline-flex;
+  display: flex;
   position: absolute;
-  white-space: nowrap;
-  animation: scroll 20s linear infinite;
+  top: 50%;
+  transform: translateY(-50%);
+  width: fit-content;
+  animation: scroll 17s linear infinite;
 }
 
 .marquee-content {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: 0;
+  gap: 100px; /* Aumentamos el espacio entre bloques */
+  padding: 0 50px; /* Añadimos padding para mejor espaciado */
 }
 
 .announcement-text {
-  padding: 0 40px;
   font-size: 14px;
   font-weight: 400;
-  display: inline-flex;
-  align-items: center;
+  white-space: nowrap;
+  padding: 0 40px;
 }
 
 .announcement-link {
@@ -518,15 +518,15 @@ details[open] {
 
 .announcement-separator {
   color: rgba(255, 255, 255, 0.5);
-  margin: 0 20px; /* Más espacio para los separadores */
+  margin: 0 60px; /* Más espacio entre separadores */
 }
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translate(0, -50%);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translate(calc(-100% - 100px), -50%); /* Ajustamos la distancia del desplazamiento */
   }
 }
 
