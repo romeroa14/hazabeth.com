@@ -479,13 +479,33 @@ details[open] {
 
 .announcement-bar-container {
   width: 100vw;
-  overflow: hidden;
-  background-color: #000;
-  color: #fff;
-  position: relative;
-  height: 40px;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.header-wrapper {
+  position: fixed;
+  width: 100%;
+  top: 40px; /* Altura de la barra de anuncios */
+  left: 0;
+  z-index: 999;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.hide-up {
+  transform: translateY(-100%);
+}
+
+.header-wrapper.hide-up {
+  transform: translateY(-100%);
+}
+
+main {
+  margin-top: calc(40px + 80px); /* Altura de la barra de anuncios + altura del header */
 }
 
 .announcement-marquee {
