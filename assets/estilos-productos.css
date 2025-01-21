@@ -494,7 +494,7 @@ details[open] {
   top: 50%;
   transform: translateY(-50%);
   width: fit-content;
-  animation: scroll 17s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 .marquee-content {
