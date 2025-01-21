@@ -71,22 +71,6 @@
               {% endunless %}
             {% endfor %}
           </div>
-          <div class="marquee-content">
-            {% for block in section.blocks %}
-              <span class="announcement-text">
-                {% if block.settings.link != blank %}
-                  <a href="{{ block.settings.link }}" class="announcement-link">
-                {% endif %}
-                  {{ block.settings.text }}
-                  {% if block.settings.link != blank %}
-                    </a>
-                  {% endif %}
-              </span>
-              {% unless forloop.last %}
-                <span class="announcement-separator">•</span>
-              {% endunless %}
-            {% endfor %}
-          </div>
         </div>
       </div>
       {%- if request.design_mode -%}

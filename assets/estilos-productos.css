@@ -491,29 +491,23 @@ details[open] {
 }
 
 .announcement-marquee {
-  display: flex;
+  display: inline-flex;
   position: absolute;
-  width: max-content;
+  white-space: nowrap;
   animation: scroll 20s linear infinite;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .marquee-content {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  white-space: nowrap;
   padding: 0;
-  /* Aseguramos que ambos contenidos sean idénticos */
-  min-width: max-content;
 }
 
 .announcement-text {
   padding: 0 40px;
   font-size: 14px;
   font-weight: 400;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 
@@ -528,11 +522,11 @@ details[open] {
 }
 
 @keyframes scroll {
-  0% {
-    transform: translate(0, -50%);
+  from {
+    transform: translateX(0);
   }
-  100% {
-    transform: translate(-100%, -50%);
+  to {
+    transform: translateX(-50%);
   }
 }
 
