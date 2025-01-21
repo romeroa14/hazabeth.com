@@ -66,10 +66,12 @@
                     </a>
                   {% endif %}
               </span>
-              <span class="announcement-separator">•</span>
+              {% unless forloop.last %}
+                <span class="announcement-separator">•</span>
+              {% endunless %}
             {% endfor %}
           </div>
-          <div class="marquee-content" aria-hidden="true">
+          <div class="marquee-content">
             {% for block in section.blocks %}
               <span class="announcement-text">
                 {% if block.settings.link != blank %}
@@ -80,7 +82,9 @@
                     </a>
                   {% endif %}
               </span>
-              <span class="announcement-separator">•</span>
+              {% unless forloop.last %}
+                <span class="announcement-separator">•</span>
+              {% endunless %}
             {% endfor %}
           </div>
         </div>

@@ -478,13 +478,13 @@ details[open] {
 }
 
 .announcement-bar-container {
-  width: 100vw; /* Usar viewport width para asegurar ancho completo */
+  width: 100vw;
   overflow: hidden;
   background-color: #000;
   color: #fff;
   position: relative;
-  height: 40px; /* Ajustamos altura */
-  margin-left: calc(-50vw + 50%); /* Técnica para ancho completo */
+  height: 40px;
+  margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   left: 0;
   right: 0;
@@ -496,17 +496,17 @@ details[open] {
   width: max-content;
   animation: scroll 20s linear infinite;
   left: 0;
-  top: 50%; /* Centrado vertical */
+  top: 50%;
   transform: translateY(-50%);
-  line-height: 1; /* Ajuste de línea */
 }
 
 .marquee-content {
   display: flex;
-  align-items: center; /* Centrado vertical */
+  align-items: center;
   white-space: nowrap;
-  height: 100%;
-  padding: 0; /* Eliminamos padding */
+  padding: 0;
+  /* Aseguramos que ambos contenidos sean idénticos */
+  min-width: max-content;
 }
 
 .announcement-text {
@@ -514,8 +514,7 @@ details[open] {
   font-size: 14px;
   font-weight: 400;
   display: flex;
-  align-items: center; /* Centrado vertical */
-  height: 100%;
+  align-items: center;
 }
 
 .announcement-link {
@@ -533,7 +532,7 @@ details[open] {
     transform: translate(0, -50%);
   }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-100%, -50%);
   }
 }
 
