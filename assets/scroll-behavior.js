@@ -7,6 +7,7 @@ window.addEventListener('scroll', () => {
   
   // Añadir efecto de transparencia
   if (currentScroll > 0) {
+    console.log('currentScroll', currentScroll);
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
