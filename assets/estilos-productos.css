@@ -494,23 +494,26 @@ details[open] {
 .header-wrapper {
   position: fixed;
   width: 100%;
-  top: 40px; /* Altura de la barra de anuncios */
+  top: 40px;
   left: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 1); /* Fondo blanco inicial */
-  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 1);
+  transition: all 0.4s ease;
+  opacity: 1;
 }
 
 /* Clase para el header cuando se hace scroll */
 .header-wrapper.scrolled {
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Clase para ocultar el header */
 .header-wrapper.hide-up {
   transform: translateY(-100%);
   opacity: 0;
+  pointer-events: none;
 }
 
 main {
